@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}Confirm Delete Service{% endblock %}
+
+{% block content %}
+  <div class="container mt-4">
+    <h2>Confirm Delete Service</h2>
+    <p>Are you sure you want to delete the service "{{ service.name }}"?</p>
+    <form method="post" style="display: inline;">
+      {% csrf_token %}
+      <button type="submit" class="btn btn-danger">Yes, delete</button>
+    </form>
+    <a href="{% url 'service_list' %}" class="btn btn-secondary">Cancel</a>
+  </div>
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %}Motorcycle Models{% endblock %}
+
+{% block content %}
+  <div class="container mt-4">
+    <h2>{{ brand.name }} Models</h2>
+    <a href="{% url 'motorcycle_create' %}" class="btn btn-primary mb-3">Create New Model</a>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Model Name</th>
+          <th scope="col">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for model in models %}
+          <tr>
+            <td><a href="{% url 'model_detail' model.id %}">{{ model.name }}</a></td>
+            <td>
+              <!-- Add additional actions as needed -->
+              <a href="{% url 'model_detail' model.id %}" class="btn btn-info btn-sm">Details</a>
+              <a href="{% url 'motorcycle_delete' model.id %}" class="btn btn-danger btn-sm">Delete</a>
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <a href="{% url 'brand_list' %}" class="btn btn-secondary">Back to Brands</a>
+  </div>
+{% endblock %}

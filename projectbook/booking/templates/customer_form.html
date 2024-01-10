@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container mt-4">
+    <h2>{% if customer %}Update Customer{% else %}Create Customer{% endif %}</h2>
+
+    <form method="post" action="{% if customer %}{% url 'customer_update' pk=customer.pk %}{% else %}{% url 'customer_create' %}{% endif %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Save</button>
+        <a href="{% url 'customer_list' %}" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>
+
+{% endblock %}

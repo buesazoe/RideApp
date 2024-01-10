@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ model.name }} Details{% endblock %}
+
+{% block content %}
+  <div class="container mt-4">
+    <h2>{{ model.name }} Details</h2>
+    <p>Brand: {{ model.brand.name }}</p>
+    <p>Year: {{ model.year }}</p>
+    <!-- Add other model details as needed -->
+    
+    <a href="{% url 'model_list' model.brand.id %}" class="btn btn-secondary">Back to Models</a>
+  </div>
+{% endblock %}
